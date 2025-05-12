@@ -11,6 +11,7 @@ import os
 import gc
 import ruamel.yaml
 import gdown
+from ruamel.yaml import YAML
 
 dependencies = ['einops', 'pycocotools', 'ruamel.yaml', 'timm', 'torch', 'transformers.models']
 
