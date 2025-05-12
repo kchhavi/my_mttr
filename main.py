@@ -1,9 +1,10 @@
 import argparse
 import torch
 from trainer import Trainer
-import ruamel.yaml
+import ruamel.yaml 
 import os
 import wandb
+from ruamel.yaml import YAML
 
 os.environ['MASTER_ADDR'] = '127.0.0.1'
 os.environ['MASTER_PORT'] = '12356'
@@ -11,7 +12,9 @@ os.environ['MASTER_PORT'] = '12356'
 
 def run(process_id, args):
     with open(args.config_path) as f:
-        config = ruamel.yaml.safe_load(f)
+        #config = ruamel.yaml.safe_load(f)
+        yaml = YAML(typ='safe', pure=True)
+        config = yaml.load(f)
     config = {k: v['value'] for k, v in config.items()}
     config = {**config, **vars(args)}
     config = argparse.Namespace(**config)
