@@ -31,7 +31,9 @@ def get_refer_youtube_vos_config(config_dir=None):
     config_url = 'https://raw.githubusercontent.com/mttr2021/MTTR/main/configs/refer_youtube_vos.yaml'
     download_url_to_file(config_url, config_path)
     with open(config_path) as f:
-        config = ruamel.yaml.safe_load(f)
+        #config = ruamel.yaml.safe_load(f)
+        yaml = YAML(typ='safe', pure=True)
+        config = yaml.load(f)
     return config
 
 
